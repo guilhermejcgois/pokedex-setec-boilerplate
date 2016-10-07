@@ -48,9 +48,7 @@ describe('Spinner component', () => {
         expect(stub.calledOnce).to.be.true;
       });
     });
-  });
 
-  describe('#bindListeners', () => {
     context('when spinner:hide event is triggered', () => {
       it('calls #onSpinnerHide', () => {
         // setup local
@@ -63,6 +61,28 @@ describe('Spinner component', () => {
         // 3 = Verify
         expect(stub.calledOnce).to.be.true;
       });
+    });
+  });
+
+  describe('#onSpinnerShow', () => {
+    it('displays the spinner', () => {
+      const visibleClass = instance.spinnerVisibleClass;
+
+      instance.onSpinnerShow();
+      const hasClass = instance.$element.hasClass(visibleClass);
+
+      expect(hasClass).to.be.true;
+    });
+  });
+
+  describe('#onSpinnerHide', () => {
+    it('hides the spinner', () => {
+      const visibleClass = instance.spinnerVisibleClass;
+
+      instance.onSpinnerHide();
+      const hasClass = instance.$element.hasClass(visibleClass);
+
+      expect(hasClass).to.be.false;
     });
   });
 });
